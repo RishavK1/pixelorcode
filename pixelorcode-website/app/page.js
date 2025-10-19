@@ -4,6 +4,7 @@ import ServicesSection from '@/components/ServicesSection';
 import PricingSection from '@/components/PricingSection';
 import ProcessSection from '@/components/ProcessSection';
 import PortfolioSection from '@/components/PortfolioSection';
+import ComparisonSection from '@/components/ComparisonSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FAQSection from '@/components/FAQSection';
 import ContactFooter from '@/components/ContactFooter';
@@ -27,6 +28,9 @@ export default function Home() {
         </section>
         <section id="pricing">
           <PricingSection />
+        </section>
+        <section id="comparison">
+          <ComparisonSection />
         </section>
         <section id="testimonials">
           <TestimonialsSection />

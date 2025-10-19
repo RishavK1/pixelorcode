@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code2, Smartphone, Palette, Server, Wrench, TrendingUp, ArrowRight } from 'lucide-react';
+import { Code2, Smartphone, Palette, Server, Wrench, TrendingUp, ArrowRight, Check, Sparkles } from 'lucide-react';
 
 const services = [
   {
@@ -48,40 +48,58 @@ const services = [
 
 const colorClasses = {
   emerald: {
-    bg: "bg-emerald-500/10",
-    border: "border-emerald-500/20",
-    icon: "text-emerald-400",
-    hover: "hover:border-emerald-500/40"
+    gradient: "from-emerald-400 via-emerald-500 to-teal-500",
+    glowFrom: "from-emerald-500/20",
+    glowTo: "to-teal-500/20",
+    text: "text-emerald-400",
+    lightText: "text-emerald-300",
+    iconBg: "bg-emerald-500/10",
+    borderGlow: "shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]"
   },
   cyan: {
-    bg: "bg-cyan-500/10",
-    border: "border-cyan-500/20",
-    icon: "text-cyan-400",
-    hover: "hover:border-cyan-500/40"
+    gradient: "from-cyan-400 via-cyan-500 to-blue-500",
+    glowFrom: "from-cyan-500/20",
+    glowTo: "to-blue-500/20",
+    text: "text-cyan-400",
+    lightText: "text-cyan-300",
+    iconBg: "bg-cyan-500/10",
+    borderGlow: "shadow-[0_0_30px_-5px_rgba(6,182,212,0.3)]"
   },
   purple: {
-    bg: "bg-purple-500/10",
-    border: "border-purple-500/20",
-    icon: "text-purple-400",
-    hover: "hover:border-purple-500/40"
+    gradient: "from-purple-400 via-purple-500 to-pink-500",
+    glowFrom: "from-purple-500/20",
+    glowTo: "to-pink-500/20",
+    text: "text-purple-400",
+    lightText: "text-purple-300",
+    iconBg: "bg-purple-500/10",
+    borderGlow: "shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)]"
   },
   blue: {
-    bg: "bg-blue-500/10",
-    border: "border-blue-500/20",
-    icon: "text-blue-400",
-    hover: "hover:border-blue-500/40"
+    gradient: "from-blue-400 via-blue-500 to-indigo-500",
+    glowFrom: "from-blue-500/20",
+    glowTo: "to-indigo-500/20",
+    text: "text-blue-400",
+    lightText: "text-blue-300",
+    iconBg: "bg-blue-500/10",
+    borderGlow: "shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]"
   },
   orange: {
-    bg: "bg-orange-500/10",
-    border: "border-orange-500/20",
-    icon: "text-orange-400",
-    hover: "hover:border-orange-500/40"
+    gradient: "from-orange-400 via-orange-500 to-red-500",
+    glowFrom: "from-orange-500/20",
+    glowTo: "to-red-500/20",
+    text: "text-orange-400",
+    lightText: "text-orange-300",
+    iconBg: "bg-orange-500/10",
+    borderGlow: "shadow-[0_0_30px_-5px_rgba(249,115,22,0.3)]"
   },
   pink: {
-    bg: "bg-pink-500/10",
-    border: "border-pink-500/20",
-    icon: "text-pink-400",
-    hover: "hover:border-pink-500/40"
+    gradient: "from-pink-400 via-pink-500 to-rose-500",
+    glowFrom: "from-pink-500/20",
+    glowTo: "to-rose-500/20",
+    text: "text-pink-400",
+    lightText: "text-pink-300",
+    iconBg: "bg-pink-500/10",
+    borderGlow: "shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)]"
   }
 };
 
@@ -110,45 +128,111 @@ export default function ServicesSection() {
             return (
               <div 
                 key={index}
-                className={`${colors.bg} ${colors.border} ${colors.hover} border-2 rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl`}
+                className="group relative h-full"
               >
-                <div className={`${colors.bg} ${colors.border} border w-14 h-14 rounded-lg flex items-center justify-center mb-4`}>
-                  <Icon className={`w-7 h-7 ${colors.icon}`} />
+                {/* Animated Glow Border */}
+                <div className={`absolute -inset-[1px] bg-gradient-to-r ${colors.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-sm ${colors.borderGlow}`}></div>
+                
+                {/* Card Container */}
+                <div className="relative h-full bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800/90 backdrop-blur-xl border border-slate-800/50 rounded-3xl p-8 transition-all duration-700 hover:-translate-y-2 overflow-hidden shadow-xl hover:shadow-2xl">
+                  
+                  {/* Animated Mesh Gradient Background */}
+                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${colors.glowFrom} ${colors.glowTo} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-0`}></div>
+                  
+                  {/* Shine Effect on Hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Icon Container with Premium Design */}
+                    <div className="relative mb-8 inline-block">
+                      {/* Outer Glow Ring */}
+                      <div className={`absolute -inset-3 bg-gradient-to-r ${colors.gradient} rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-500 group-hover:scale-110`}></div>
+                      
+                      {/* Icon Background */}
+                      <div className={`relative ${colors.iconBg} backdrop-blur-sm rounded-2xl p-4 border border-slate-700/30 group-hover:border-slate-600/50 transition-all duration-500`}>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-10 rounded-2xl`}></div>
+                        <Icon className={`relative w-10 h-10 ${colors.text} group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`} />
+                      </div>
+                      
+                      {/* Sparkle Badge */}
+                      <div className={`absolute -top-1 -right-1 ${colors.iconBg} rounded-full p-1.5 border border-slate-700/50 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-0 group-hover:scale-100`}>
+                        <Sparkles className={`w-3 h-3 ${colors.lightText}`} />
+                      </div>
+                    </div>
+                    
+                    {/* Title with Gradient on Hover */}
+                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
+                      {service.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-slate-400 mb-8 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
+                      {service.description}
+                    </p>
+                    
+                    {/* Features List with Check Icons */}
+                    <div className="space-y-3.5 mb-6">
+                      {service.features.map((feature, idx) => (
+                        <div 
+                          key={idx} 
+                          className="flex items-center gap-3 group/item"
+                          style={{ transitionDelay: `${idx * 75}ms` }}
+                        >
+                          {/* Animated Check Icon */}
+                          <div className={`relative flex-shrink-0 w-5 h-5 rounded-md ${colors.iconBg} flex items-center justify-center border border-slate-700/50 group-hover:border-slate-600/50 transition-all duration-300 group-hover:scale-110`}>
+                            <Check className={`w-3 h-3 ${colors.text} opacity-70 group-hover:opacity-100 transition-opacity duration-300`} />
+                          </div>
+                          <span className="text-slate-300 group-hover:text-white transition-colors duration-300 font-medium text-sm">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* CTA Button */}
+                    <div className="pt-6 border-t border-slate-800/50 group-hover:border-slate-700/50 transition-colors duration-500">
+                      <button className={`flex items-center gap-2 text-sm font-semibold ${colors.text} group-hover:${colors.lightText} transition-all duration-300 group-hover:gap-3`}>
+                        <span>Explore Service</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Bottom Gradient Accent */}
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${colors.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
                 </div>
-                
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-slate-400 mb-4 leading-relaxed">{service.description}</p>
-                
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-slate-300">
-                      <div className={`w-1.5 h-1.5 rounded-full ${colors.icon.replace('text-', 'bg-')}`}></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
               </div>
             );
           })}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-2xl p-8 lg:p-12">
-          <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-            Ready to start your project?
-          </h3>
-          <p className="text-slate-400 mb-6 max-w-xl mx-auto">
-            Let's discuss your goals and create a custom solution that fits your needs and budget.
-          </p>
-          <a 
-            href="https://wa.me/917404511743?text=Hi%20PixelorCode!%20I'd%20like%20to%20discuss%20a%20project."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-emerald-500/20"
-          >
-            Start Your Project Today
-            <ArrowRight className="w-5 h-5" />
-          </a>
+        <div className="relative group bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8 lg:p-12 overflow-hidden">
+          {/* Animated Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-purple-500/10 opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-cyan-500/5 blur-3xl"></div>
+          
+          {/* Content */}
+          <div className="relative z-10 text-center">
+            <h3 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              Ready to start your project?
+            </h3>
+            <p className="text-slate-300 text-lg mb-8 max-w-xl mx-auto">
+              Let's discuss your goals and create a custom solution that fits your needs and budget.
+            </p>
+            <a 
+              href="https://wa.me/917404511743?text=Hi%20PixelorCode!%20I'd%20like%20to%20discuss%20a%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-emerald-500/50"
+            >
+              <span>Start Your Project Today</span>
+              <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
+            </a>
+          </div>
         </div>
 
       </div>

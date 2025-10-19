@@ -7,7 +7,9 @@ import PortfolioSection from '@/components/PortfolioSection';
 import ComparisonSection from '@/components/ComparisonSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FAQSection from '@/components/FAQSection';
+import BlogSection from '@/components/BlogSection';
 import ContactFooter from '@/components/ContactFooter';
+import { blogsData } from '@/data/blogs';
 
 export default function Home() {
   return (
@@ -37,6 +39,9 @@ export default function Home() {
         </section>
         <section id="faq">
           <FAQSection />
+        </section>
+        <section id="blog">
+          <BlogSection blogs={blogsData} />
         </section>
         <ContactFooter />
       </main>

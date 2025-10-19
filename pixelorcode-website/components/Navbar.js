@@ -16,13 +16,13 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'FAQ', href: '#faq' },
+    { name: 'Home', href: '/#home' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Process', href: '/#process' },
+    { name: 'Portfolio', href: '/#portfolio' },
+    { name: 'Pricing', href: '/#pricing' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'FAQ', href: '/#faq' },
   ];
 
   const handleLinkClick = () => {

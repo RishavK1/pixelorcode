@@ -134,7 +134,7 @@ export default function ServicesSection() {
                 <div className={`absolute -inset-[1px] bg-gradient-to-r ${colors.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-sm ${colors.borderGlow}`}></div>
                 
                 {/* Card Container */}
-                <div className="relative h-full bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800/90 backdrop-blur-xl border border-slate-800/50 rounded-3xl p-8 transition-all duration-700 hover:-translate-y-2 overflow-hidden shadow-xl hover:shadow-2xl">
+                <div className="relative h-full bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800/90 backdrop-blur-xl border border-slate-800/50 rounded-3xl p-6 md:p-8 transition-all duration-700 hover:-translate-y-2 overflow-hidden shadow-xl hover:shadow-2xl">
                   
                   {/* Animated Mesh Gradient Background */}
                   <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${colors.glowFrom} ${colors.glowTo} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-0`}></div>
@@ -147,7 +147,7 @@ export default function ServicesSection() {
                   {/* Content */}
                   <div className="relative z-10">
                     {/* Icon Container with Premium Design */}
-                    <div className="relative mb-8 inline-block">
+                    <div className="relative mb-5 md:mb-8 inline-block">
                       {/* Outer Glow Ring */}
                       <div className={`absolute -inset-3 bg-gradient-to-r ${colors.gradient} rounded-2xl opacity-20 group-hover:opacity-40 blur-xl transition-all duration-500 group-hover:scale-110`}></div>
                       
@@ -164,17 +164,17 @@ export default function ServicesSection() {
                     </div>
                     
                     {/* Title with Gradient on Hover */}
-                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
                       {service.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-slate-400 mb-8 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
+                    <p className="text-sm md:text-base text-slate-400 mb-5 md:mb-8 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
                       {service.description}
                     </p>
                     
                     {/* Features List with Check Icons */}
-                    <div className="space-y-3.5 mb-6">
+                    <div className="space-y-2.5 md:space-y-3.5">
                       {service.features.map((feature, idx) => (
                         <div 
                           key={idx} 
@@ -192,13 +192,7 @@ export default function ServicesSection() {
                       ))}
                     </div>
                     
-                    {/* CTA Button */}
-                    <div className="pt-6 border-t border-slate-800/50 group-hover:border-slate-700/50 transition-colors duration-500">
-                      <button className={`flex items-center gap-2 text-sm font-semibold ${colors.text} group-hover:${colors.lightText} transition-all duration-300 group-hover:gap-3`}>
-                        <span>Explore Service</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      </button>
-                    </div>
+
                   </div>
                   
                   {/* Bottom Gradient Accent */}

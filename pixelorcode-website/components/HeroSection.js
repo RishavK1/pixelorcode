@@ -11,7 +11,7 @@ export default function HeroSection() {
         <div className="flex items-center justify-center gap-2 mb-8">
           <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2">
             <Zap className="w-4 h-4 text-emerald-400" />
-            <span className="text-sm text-emerald-400 font-medium">50+ Projects Delivered</span>
+            <span className="text-sm text-emerald-400 font-medium">12+ Successful Launches</span>
           </div>
         </div>
 

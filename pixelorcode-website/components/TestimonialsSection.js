@@ -167,7 +167,7 @@ export default function TestimonialsSection() {
         {/* Stats Grid */}
         <div className="grid md:grid-cols-4 gap-6 mb-16">
           <div className="bg-slate-900 border-2 border-slate-800 rounded-2xl p-6 text-center">
-            <div className="text-4xl font-bold text-emerald-400 mb-2">50+</div>
+            <div className="text-4xl font-bold text-emerald-400 mb-2">12+</div>
             <p className="text-slate-400">Projects Delivered</p>
           </div>
           <div className="bg-slate-900 border-2 border-slate-800 rounded-2xl p-6 text-center">
@@ -186,7 +186,7 @@ export default function TestimonialsSection() {
 
         {/* Trust Badges */}
         <div className="text-center bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-2xl p-8">
-          <h3 className="text-xl font-bold mb-4">Join 50+ Happy Clients</h3>
+          <h3 className="text-xl font-bold mb-4">Growing Portfolio</h3>
           <p className="text-slate-400 mb-6">
             Ready to transform your digital presence? Let's create something amazing together.
           </p>

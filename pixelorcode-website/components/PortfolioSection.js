@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Clock, Tag, ArrowRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Clock, Tag, ArrowRight, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { projectsData } from '@/data/projects';
 import Link from 'next/link';
 
@@ -9,10 +9,33 @@ const categories = ["All", "Corporate Website", "E-commerce", "Web Application",
 
 export default function PortfolioSection() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef(null);
 
   const filteredProjects = selectedCategory === "All" 
     ? projectsData
     : projectsData.filter(p => p.category === selectedCategory);
+
+  const scrollToIndex = (index) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = 450; // card width + gap
+      scrollContainerRef.current.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+      });
+      setCurrentIndex(index);
+    }
+  };
+
+  const handlePrev = () => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : filteredProjects.length - 1;
+    scrollToIndex(newIndex);
+  };
+
+  const handleNext = () => {
+    const newIndex = currentIndex < filteredProjects.length - 1 ? currentIndex + 1 : 0;
+    scrollToIndex(newIndex);
+  };
 
   return (
     <div className="bg-slate-900 text-white py-24">
@@ -46,56 +69,89 @@ export default function PortfolioSection() {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <Link
-              key={project.id}
-              href={`/case-studies/${project.slug}`}
-              className="group bg-slate-800 rounded-2xl overflow-hidden border-2 border-slate-700 hover:border-emerald-500/50 transition-all duration-300 cursor-pointer hover:scale-105"
+        {/* Modern Carousel Container */}
+        <div className="relative px-4">
+          {/* Navigation Buttons - Modern Glass Style */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-slate-800/80 backdrop-blur-xl border border-slate-700 hover:bg-emerald-500 hover:border-emerald-500 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl group"
+          >
+            <ChevronLeft className="w-6 h-6 text-slate-300 group-hover:text-slate-950 transition-colors" />
+          </button>
+          
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-slate-800/80 backdrop-blur-xl border border-slate-700 hover:bg-emerald-500 hover:border-emerald-500 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl group"
+          >
+            <ChevronRight className="w-6 h-6 text-slate-300 group-hover:text-slate-950 transition-colors" />
+          </button>
+
+          {/* Cards Container */}
+          <div className="overflow-visible mx-12">
+            <div 
+              ref={scrollContainerRef}
+              className="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-8 pt-2"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {/* Project Image */}
-              <div className="relative h-56 bg-slate-700 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.classList.add('bg-slate-700');
-                  }}
-                />
-              </div>
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className="flex-shrink-0 w-[420px] py-2"
+                >
+                  <Link
+                    href={`/case-studies/${project.slug}`}
+                    className="group block relative h-[500px] rounded-3xl overflow-hidden border-2 border-slate-700 transition-all duration-500 hover:scale-[1.02]"
+                  >
+                    {/* Project Image - Full Card */}
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.classList.add('bg-slate-700');
+                      }}
+                    />
+                    
+                    {/* Gradient Overlay - Bottom to Top */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+                    
+                    {/* Hover Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              {/* Project Info */}
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <Tag className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-400 text-sm font-semibold">{project.category}</span>
+                    {/* Content Overlay - Bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-8">
+                      {/* Project Title */}
+                      <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-emerald-400 transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      
+                      {/* View Case Study Button */}
+                      <button className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:gap-3">
+                        View Case Study
+                        <ArrowRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </Link>
                 </div>
+              ))}
+            </div>
+          </div>
 
-                <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-slate-400 text-sm mb-4 line-clamp-2">
-                  {project.description}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-slate-500">
-                    <Clock className="w-4 h-4" />
-                    {project.timeline}
-                  </div>
-                  <span className="text-emerald-400 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                    View Case Study
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
+          {/* Modern Progress Dots */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            {filteredProjects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToIndex(index)}
+                className={`transition-all duration-500 rounded-full ${
+                  index === currentIndex
+                    ? 'w-12 h-3 bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-lg shadow-emerald-500/50'
+                    : 'w-3 h-3 bg-slate-700 hover:bg-slate-600 hover:scale-125'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Bottom CTA */}

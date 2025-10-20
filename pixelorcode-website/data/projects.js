@@ -63,7 +63,7 @@ export const projectsData = [
       author: "Rajesh Kumar",
       role: "Managing Director",
       company: "Perpetual Power Services",
-      rating: 5
+      rating: 4.5
     },
     
     results: [
@@ -137,7 +137,7 @@ export const projectsData = [
       author: "Amit Sharma",
       role: "CEO",
       company: "Rudra Infocom",
-      rating: 5
+      rating: 4
     },
     
     results: [
@@ -285,7 +285,7 @@ export const projectsData = [
       author: "Vikram Singh",
       role: "Operations Head",
       company: "Meena Play World",
-      rating: 5
+      rating: 4.5
     },
     
     results: [
@@ -359,7 +359,7 @@ export const projectsData = [
       author: "Neha Gupta",
       role: "Restaurant Owner",
       company: "Tomato Food Ordering",
-      rating: 5
+      rating: 3.5
     },
     
     results: [
@@ -433,7 +433,7 @@ export const projectsData = [
       author: "Arjun Patel",
       role: "Startup Founder",
       company: "CarRental Platform",
-      rating: 5
+      rating: 4.5
     },
     
     results: [

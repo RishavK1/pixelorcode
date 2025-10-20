@@ -236,11 +236,6 @@ export default function CaseStudyTemplate({ caseStudy = caseStudyExample }) {
                   <p className="text-sm text-slate-400 mb-1">Timeline</p>
                   <p className="font-semibold text-emerald-400">{caseStudy.overview.timeline}</p>
                 </div>
-                
-                <div>
-                  <p className="text-sm text-slate-400 mb-1">Investment</p>
-                  <p className="font-semibold text-emerald-400">{caseStudy.overview.budget}</p>
-                </div>
 
                 <div>
                   <p className="text-sm text-slate-400 mb-2">Deliverables</p>
@@ -407,9 +402,15 @@ export default function CaseStudyTemplate({ caseStudy = caseStudyExample }) {
             </div>
 
             <div className="flex items-center gap-1 mb-6 mt-4">
-              {[...Array(caseStudy.testimonial.rating)].map((_, i) => (
+              {[...Array(Math.floor(caseStudy.testimonial.rating))].map((_, i) => (
                 <div key={i} className="w-6 h-6 text-emerald-400">★</div>
               ))}
+              {caseStudy.testimonial.rating % 1 !== 0 && (
+                <div className="w-6 h-6 text-emerald-400 relative">
+                  <span className="absolute" style={{overflow: 'hidden', width: '50%'}}>★</span>
+                  <span className="absolute text-slate-600">★</span>
+                </div>
+              )}
             </div>
 
             <p className="text-xl lg:text-2xl text-slate-200 leading-relaxed mb-8">

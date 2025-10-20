@@ -9,7 +9,7 @@ const testimonials = [
     role: "Managing Director",
     company: "Perpetual Power Services",
     image: null,
-    rating: 5,
+    rating: 4.5,
     text: "PixelorCode delivered a clean, professional website that perfectly showcases our 34+ years in renewable energy. The team understood our industry needs and created exactly what we envisioned. Highly professional work!",
     project: "Corporate Website",
     result: "40% increase in inquiries"
@@ -19,7 +19,7 @@ const testimonials = [
     role: "CEO",
     company: "Rudra Infocom",
     image: null,
-    rating: 5,
+    rating: 4,
     text: "Modern, clear website that highlights our telecom services perfectly. Great attention to detail and user experience. The navigation is intuitive and our clients love the professional look. Delivered on time and within budget.",
     project: "Service Platform",
     result: "Enhanced brand credibility"
@@ -39,7 +39,7 @@ const testimonials = [
     role: "Operations Head",
     company: "Meena Play World",
     image: null,
-    rating: 5,
+    rating: 4.5,
     text: "Bright, safe, and easy to explore our equipment catalog. Parents love the intuitive navigation and clear product information. The team was responsive and made changes quickly based on our feedback.",
     project: "Product Catalog",
     result: "30% more product inquiries"
@@ -49,7 +49,7 @@ const testimonials = [
     role: "Restaurant Owner",
     company: "Tomato Food Ordering",
     image: null,
-    rating: 5,
+    rating: 3.5,
     text: "Our online ordering has never been smoother! The website is beautiful, fast, and customers find it very easy to place orders. PixelorCode understood exactly what we needed for our food business.",
     project: "Web Application",
     result: "Streamlined ordering process"
@@ -59,7 +59,7 @@ const testimonials = [
     role: "Startup Founder",
     company: "CarRental Platform",
     image: null,
-    rating: 5,
+    rating: 4.5,
     text: "From idea to launch in just 3 weeks! The booking system works flawlessly and the admin dashboard makes management so easy. Best investment for our startup. Highly recommend PixelorCode!",
     project: "SaaS Platform",
     result: "Complete booking system in 3 weeks"
@@ -104,9 +104,15 @@ export default function TestimonialsSection() {
 
             {/* Stars */}
             <div className="flex items-center gap-1 mb-6 mt-4">
-              {[...Array(currentTestimonial.rating)].map((_, i) => (
+              {[...Array(Math.floor(currentTestimonial.rating))].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-emerald-400 text-emerald-400" />
               ))}
+              {currentTestimonial.rating % 1 !== 0 && (
+                <div className="relative w-5 h-5">
+                  <Star className="w-5 h-5 fill-emerald-400 text-emerald-400 absolute" style={{clipPath: 'inset(0 50% 0 0)'}} />
+                  <Star className="w-5 h-5 fill-slate-700 text-slate-700 absolute" style={{clipPath: 'inset(0 0 0 50%)'}} />
+                </div>
+              )}
             </div>
 
             {/* Testimonial Text */}

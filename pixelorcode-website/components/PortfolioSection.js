@@ -38,7 +38,7 @@ export default function PortfolioSection() {
   };
 
   return (
-    <div className="bg-slate-900 text-white py-24">
+    <div className="bg-slate-900 text-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
@@ -70,37 +70,37 @@ export default function PortfolioSection() {
         </div>
 
         {/* Modern Carousel Container */}
-        <div className="relative px-4">
-          {/* Navigation Buttons - Modern Glass Style */}
+        <div className="relative px-0 md:px-4 mb-16 md:mb-20">
+          {/* Navigation Buttons - Repositioned for Mobile */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-slate-800/80 backdrop-blur-xl border border-slate-700 hover:bg-emerald-500 hover:border-emerald-500 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl group"
+            className="absolute left-2 sm:left-2 md:left-0 top-1/2 -translate-y-1/2 md:top-1/2 md:-translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-slate-800/80 backdrop-blur-xl border border-slate-700 hover:bg-emerald-500 hover:border-emerald-500 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl group"
           >
-            <ChevronLeft className="w-6 h-6 text-slate-300 group-hover:text-slate-950 transition-colors" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-slate-300 group-hover:text-slate-950 transition-colors" />
           </button>
           
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-slate-800/80 backdrop-blur-xl border border-slate-700 hover:bg-emerald-500 hover:border-emerald-500 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl group"
+            className="absolute right-2 sm:right-2 md:right-0 top-1/2 -translate-y-1/2 md:top-1/2 md:-translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-slate-800/80 backdrop-blur-xl border border-slate-700 hover:bg-emerald-500 hover:border-emerald-500 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl group"
           >
-            <ChevronRight className="w-6 h-6 text-slate-300 group-hover:text-slate-950 transition-colors" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-slate-300 group-hover:text-slate-950 transition-colors" />
           </button>
 
           {/* Cards Container */}
-          <div className="overflow-visible mx-12">
+          <div className="overflow-visible mx-0 md:mx-12">
             <div 
               ref={scrollContainerRef}
-              className="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-8 pt-2"
+              className="flex gap-4 sm:gap-4 md:gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-2 md:pb-4 pt-2 px-4 md:px-1"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {filteredProjects.map((project, index) => (
                 <div
                   key={project.id}
-                  className="flex-shrink-0 w-[420px] py-2"
+                  className="flex-shrink-0 w-[calc(100vw-2rem-4rem)] sm:w-[calc(85vw-2rem)] md:w-[70vw] lg:w-[420px] py-2"
                 >
                   <Link
                     href={`/case-studies/${project.slug}`}
-                    className="group block relative h-[500px] rounded-3xl overflow-hidden border-2 border-slate-700 transition-all duration-500 hover:scale-[1.02]"
+                    className="group block relative h-[400px] sm:h-[450px] md:h-[500px] rounded-2xl md:rounded-3xl overflow-hidden border-2 border-slate-700 transition-all duration-500 hover:scale-[1.02]"
                   >
                     {/* Project Image - Full Card */}
                     <img 
@@ -120,16 +120,16 @@ export default function PortfolioSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                     {/* Content Overlay - Bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
                       {/* Project Title */}
-                      <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-emerald-400 transition-colors duration-300">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-white group-hover:text-emerald-400 transition-colors duration-300">
                         {project.title}
                       </h3>
                       
                       {/* View Case Study Button */}
-                      <button className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:gap-3">
+                      <button className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg md:rounded-xl text-sm md:text-base transition-all duration-300 group-hover:scale-105 group-hover:gap-3">
                         View Case Study
-                        <ArrowRight className="w-5 h-5" />
+                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                       </button>
                     </div>
                   </Link>
@@ -139,15 +139,15 @@ export default function PortfolioSection() {
           </div>
 
           {/* Modern Progress Dots */}
-          <div className="flex items-center justify-center gap-3 mt-8">
+          <div className="flex items-center justify-center gap-2 md:gap-3 mt-6 md:mt-8">
             {filteredProjects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
                 className={`transition-all duration-500 rounded-full ${
                   index === currentIndex
-                    ? 'w-12 h-3 bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-lg shadow-emerald-500/50'
-                    : 'w-3 h-3 bg-slate-700 hover:bg-slate-600 hover:scale-125'
+                    ? 'w-8 md:w-12 h-2 md:h-3 bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-lg shadow-emerald-500/50'
+                    : 'w-2 md:w-3 h-2 md:h-3 bg-slate-700 hover:bg-slate-600 hover:scale-125'
                 }`}
               />
             ))}
@@ -155,7 +155,7 @@ export default function PortfolioSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-20 text-center">
+        <div className="mt-8 md:mt-12 mb-0 text-center">
           <h3 className="text-2xl lg:text-3xl font-bold mb-4">
             Want to see your project here?
           </h3>
